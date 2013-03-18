@@ -1,40 +1,6 @@
 require 'sinatra'
-
-get '/' do
-  """
-    <a href='/form'>/form</a><br>
-    <a href='/secret'>/secret</a>
-  """
-end
-
-get '/form' do
-  erb :form
-end
-
-post '/form' do
-  "You said '#{params[:message]}'"
-end
-
-get '/secret' do
-  erb :secret
-end
-
-post '/secret' do
-  params[:secret].reverse
-end
-
-get '/decrypt/:secret' do
-  params[:secret].reverse
-end
-
-not_found do
-  halt 404, 'page not found'
-end
+require './routes.rb'
 
 
-
-
-
-
-
+set :public_folder, File.dirname(__FILE__) + '/public'
 
